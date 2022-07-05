@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css')}}">
+    {% if title %}
+    <title>Sentiment Analyser - {{title}}</title>
+    {% else %}
+    <title>Sentiment Analyser </title>
+    {% endif %}
+</head>
+
+<body>
+    <div class=" background">
+        <div class="heading">
+            <p> </p>
+            <p class="welcome">WELCOME TO SENTIMENT-ANALYSER</p>
+            <p> </p>
+        </div>
+        <div class="container">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset>
+                    {{ form.statement.label }}
+                    {% if form.statement.errors %}
+                    <div>
+                        {% for error in form.statement.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <span class="textbox">
+                        {{ form.statement }}
+                    </span>
+                    {% endif %}
+                </fieldset>
+        </div>
+        <div>
+            {{ form.submit(class="button")}}
+        </div>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,message in messages %}
+        <div class="output">
+            <p class="message">{{ message }} </p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='form.css')}}">
+    {% if title %}
+    <title>Sentiment Analyser - {{title}}</title>
+    {% else %}
+    <title>Sentiment Analyser </title>
+    {% endif %}
+</head>
+
+<body>
+    <div class=" background">
+        <div class="heading">
+            <p> </p>
+            <p class="welcome">WELCOME TO SENTIMENT-ANALYSER</p>
+            <p> </p>
+        </div>
+        <div>
+            <form method="POST" action="/upload-files" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="inputbox">
+                        <label>Select File</label>
+                        <input type="file" name="document" id="document">
+                    </div>
+                    <button type="submit" class="button">Analyse</button>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>
